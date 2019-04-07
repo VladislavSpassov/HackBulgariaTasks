@@ -1,9 +1,8 @@
-def count_consonants(str):
+def count_consonants(s):
     count = 0
-    for v in str:
-        if(v != 'a' or v != 'e' or v != 'i'or  v != 'o' or  v != 'u' or  v != 'y'):
-            count = count + 1
-        elif(v != 'A' or v != 'E' or v != 'I'or  v != 'O' or  v != 'U' or  v != 'Y'):
+    for v in s:
+        if(v != 'a' and v != 'e' and v != 'i' and  v != 'o' and  v != 'u'and   v != 'y' and 
+            v != 'A' and v != 'E' and v != 'I' and  v != 'O' and  v != 'U' and  v != 'Y'):
             count = count + 1
     return count
 
