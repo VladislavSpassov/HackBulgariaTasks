@@ -1,0 +1,39 @@
+
+
+def accepts(*types):
+    def decorater(f):
+        def func(*values):
+            for i in range(len(types)):
+                if(type(values[i]) != types[i]):
+                    raise TypeError
+
+
+
+            return f(*values)
+        return func
+    return decorater
+
+
+
+
+def encrypt(number):
+    def decorator(f):
+        def func(s):
+            result = ""
+            for i in range(len(s)):
+                asciCode = (ord(s[i]) + number) 
+                
+                current = chr(asciCode)
+                print(asciCode)
+                result.append(current)
+                print(result)
+            return f(result)
+        return func
+    return decorator 
+
+
+@encrypt(2)
+def get_low(s):
+    return s
+
+print(get_low("Get get get low"))
