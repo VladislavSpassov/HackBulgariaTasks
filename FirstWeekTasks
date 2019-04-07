@@ -1,0 +1,276 @@
+def char_histogram(string):
+    dict = {}
+
+    for v in string:
+        if(not(v in dict)):
+            dict[v] = 1
+        elif(v in dict):
+            dict[v] = dict[v] + 1
+
+    return dict
+#Char Histogram
+
+def count_consonants(str):
+    count = 0
+    for v in str:
+        if(v != 'a' or v != 'e' or v != 'i'or  v != 'o' or  v != 'u' or  v != 'y'):
+            count = count + 1
+        elif(v != 'A' or v != 'E' or v != 'I'or  v != 'O' or  v != 'U' or  v != 'Y'):
+            count = count + 1
+    return count
+
+
+#Count Consonants
+
+def to_number(digits):
+    ar =[]
+    s = ""
+    for v in digits:
+        if(v >= "0" and v <= "9"):
+            s = s + str(v)
+    
+    return s
+#Digits to Number    
+    
+def fact_digits(n):
+    sum = 0
+    p = int(n)
+    while(p > 0):
+        b = p % 10
+        sum += fact(b)
+        
+        p //= 10
+    return sum
+
+
+def fact(n):
+    p = int(n)
+    if(p == 1 or p == 0):
+        return 1
+    else:
+        return p * fact(p - 1)
+#Factorial
+
+
+
+def group_function(items):
+    b = [int(i) for i in items if i >= "0" and i <= "9"]
+    result = []
+    index = 0
+
+    while index < len(b):
+        result.append(sequence(index,b))
+        print(result)
+        index = index + len(sequence(index,b))
+        print(index)
+    return result
+
+
+def sequence(ind,b):
+    current = []
+    current.append(b[ind])
+    ind = ind + 1
+    
+    while(ind< len(b) - 1):
+        
+        if(b[ind] not in current):
+            break
+        
+        elif(b[ind] in current):
+            current.append(b[ind])
+        ind = ind + 1
+        print(current)
+        
+    return current 
+
+# GroupFunction
+
+def max_consequtive(lis):
+    b = [int(x) for x in lis if x >= "0" and x <= "9"]
+    print(b)
+    maxcount = []
+    index = 0
+    while index < len(b):
+        maxcount.append(currentCount(index,b))
+        index = index + currentCount(index,b)
+
+    return max(maxcount)
+
+def currentCount(index,l):
+    current = []
+    current.append(l[index])
+    index = index + 1
+    count = 1
+    while(index < len(l)):
+        if(l[index] in current):
+            count = count + 1
+        else:
+            break
+        index = index + 1
+
+
+    return count
+# Max Consequtive items
+
+def nan_expand(times):
+    time = int(times)
+    sum = ""
+    if(time == 0):
+        return ""
+    else:
+        count = 0
+        while(count != time):
+            sum = sum + "Not a "
+            count = count + 1
+            if(count == time - 1):
+                sum = sum + "Not a Nan"
+                count = count + 1
+
+    return sum
+    
+ #NanExpand
+ 
+ 
+ 
+def palindrome(n):
+    count = 0
+    l = len(n) - 1
+    while(count != round(len(n) / 2)):
+        if(n[count] != n[l]):
+            return False
+        count = count + 1
+        l = l - 1
+    return True
+#Palindrome 
+
+
+def prime_factorization(n):
+    p = int(n)
+    l = {}
+    while(p > 1):
+        print(min_divider(p))
+        if(min_divider(p) not in l.keys()):
+            l[min_divider(p)] = 1
+        else:
+            l[min_divider(p)] = l[min_divider(p)] + 1 
+        p = p / min_divider(p)
+
+    for x in l.keys():
+        print("({},{}), ".format(x,l[x]), end = " ")
+        
+
+
+
+def min_divider(n):
+    p = int(n)
+    for x in range(2,p):
+        if(int(p % x) == 0):
+            return x
+        
+    return p
+ # Prime Factorization
+ 
+def sum_matrix(m):
+    sum = 0
+    for v in m:
+        for p in v:
+            if(p > "0" and p <="9"):
+                sum += int(p)
+
+    return sum
+
+#SumNumberInMatrix
+
+
+
+def count_vowels(string):
+    count = 0
+    for v in string:
+        if(v == 'a' or v == 'e' or v == 'i'or  v == 'o' or  v == 'u' or  v == 'y'):
+            count = count + 1
+        if(v == 'A' or v == 'E' or v == 'I'or  v == 'O' or  v == 'U' or  v == 'Y'):
+            count = count + 1
+    return count
+
+
+#Vowels In String
+
+
+
+
+def Matrix(rows, columns,lst,word):
+    countWords = 0
+    for r in range(len(lst)):
+        currentRow = ""
+        for c in range(len(lst[r])):
+            currentRow += lst[r][c]
+            
+            
+        print(currentRow)
+        if(currentRow.find(word) != -1):
+            countWords+=1
+
+
+    print(countWords)
+
+
+    for r in range(len(lst)):
+        currentRow = ""
+        c = len(lst[r]) - 1
+
+        while(c >= 0):
+            currentRow += lst[r][c]
+            c -= 1
+        if(currentRow.find(word) != -1):
+            countWords += 1 
+        print(currentRow)
+
+    print(countWords)
+
+
+
+## from bottom to top
+    for c in range(columns):
+        currentRow = ""
+        r = len(lst) - 1
+            
+        while(r >= 0):
+            
+            currentRow += lst[r][c]
+
+            r = r - 1 
+        if(currentRow.find(word) != -1):
+                countWords+=1
+        
+
+    lstDiagWords = []
+    r = 0
+    c = 0
+    row = 0
+    while(row < rows):
+        r = row
+        currentDiag = ""
+        c = 0
+        while(r < rows and c < columns):
+            currentDiag += lst[r][c]
+            
+            r += 1
+            c += 1
+        row +=1
+        lstDiagWords.append(currentDiag)
+    r = 0
+    c = 0
+    col = 0
+    while(col < columns):
+        c = col
+        currentDiag = ""
+        r = 0
+        while(r < rows and c < columns):
+            currentDiag += lst[r][c]
+            
+            r += 1
+            c += 1
+        col +=1
+        print(currentDiag)
+        lstDiagWords.append(currentDiag)
+ #CountWordsInMatrix
