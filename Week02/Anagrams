@@ -1,0 +1,8 @@
+def anagrams(word1,word2):
+    for v in word1:
+        if(v.lower() not in word2.lower()):
+            print("NOT anagrams")
+            return
+
+    print("ANAGRAMS")
+    return
